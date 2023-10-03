@@ -39,7 +39,7 @@ return function()
           id = "label",
           align = "center",
           valign = "center",
-          format = "%H:%M",
+          format = "%I:%M",
           widget = wibox.widget.textclock
         },
         id = "clock_layout",

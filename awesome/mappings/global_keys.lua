@@ -15,15 +15,21 @@ return gears.table.join(
   ),
   -- Tag browsing
   awful.key(
-    { modkey },
+    { "Mod1", "Control" },
     "#113",
-    awful.tag.viewprev,
+    function ()
+      awful.tag.viewprev()
+      -- awful.client.focus.byidx(1)
+    end,
     { description = "View previous tag", group = "Tag" }
   ),
   awful.key(
-    { modkey },
+    { "Mod1", "Control" },
     "#114",
-    awful.tag.viewnext,
+    function (c)
+      awful.tag.viewnext()
+      -- c:emit_signal("request::activate", "mouse_click", { raise = true })
+    end,
     { description = "View next tag", group = "Tag" }
   ),
   awful.key(
@@ -33,24 +39,48 @@ return gears.table.join(
     { description = "Go back to last tag", group = "Tag" }
   ),
   awful.key(
-    { modkey },
-    "#44",
+    { "Mod1" },
+    "#23",
     function()
       awful.client.focus.byidx(1)
     end,
     { description = "Focus next client by index", group = "Client" }
   ),
+  -- awful.key(
+  --   { modkey },
+  --   "#114",
+  --   function()
+  --     awful.spawn.with_shell("~/.config/protonix/window-mover.sh Right")
+  --   end,
+  --   { description = "Move Focused Client towards right", group = "Client" }
+  -- ),
+  -- awful.key(
+  --   { modkey },
+  --   "#111",
+  --   function()
+  --     awful.spawn.with_shell("bash ~/.config/protonix/window-mover.sh Up")
+  --   end,
+  --   { description = "Move Focused Client towards up", group = "Client" }
+  -- ),
+  -- awful.key(
+  --   { modkey },
+  --   "#116",
+  --   function()
+  --     awful.spawn.with_shell("~/.config/protonix/window-mover.sh Down")
+  --   end,
+  --   { description = "Move Focused Client towards downjj", group = "Client" }
+  -- ),
+  -- awful.key(
+  --   { modkey },
+  --   "#45",
+  --   function()
+  --     awful.client.focus.byidx(-1)
+  --   end,
+  --   { description = "Focus previous client by index", group = "Client" }
+  -- ),
   awful.key(
     { modkey },
-    "#45",
-    function()
-      awful.client.focus.byidx(-1)
-    end,
-    { description = "Focus previous client by index", group = "Client" }
-  ),
-  awful.key(
-    { modkey, "Shift" },
-    "#44",
+    "#23",
     function()
       awful.client.swap.byidx(1)
     end,
@@ -150,39 +180,39 @@ return gears.table.join(
   ),
   awful.key(
     { modkey },
-    "#40",
+    "#65",
     function()
       awful.spawn("rofi -show drun -theme ~/.config/rofi/rofi.rasi")
     end,
     { descripton = "Application launcher", group = "Application" }
   ),
+  -- awful.key(
+  --   { modkey },
+  --   "#50",
+  --   function()
+  --     awful.spawn("rofi -show window -theme ~/.config/rofi/window.rasi")
+  --   end,
+  --   { descripton = "Client switcher (Super+tab)", group = "Application" }
+  -- ),
+  -- awful.key(
+  --   { "Mod1" },
+  --   "#23",
+  --   function()
+  --     awful.spawn("rofi -show window -theme ~/.config/rofi/window.rasi")
+  --   end,
+  --   { descripton = "Client switcher (alt+tab)", group = "Application" }
+  -- ),
+  -- awful.key(
+  --   { modkey },
+  --   "#26",
+  --   function()
+  --     awful.spawn(user_vars.file_manager)
+  --   end,
+  --   { descripton = "Open file manager", group = "System" }
+  -- ),
   awful.key(
     { modkey },
-    "#23",
-    function()
-      awful.spawn("rofi -show window -theme ~/.config/rofi/window.rasi")
-    end,
-    { descripton = "Client switcher (alt+tab)", group = "Application" }
-  ),
-  awful.key(
-    { "Mod1" },
-    "#23",
-    function()
-      awful.spawn("rofi -show window -theme ~/.config/rofi/window.rasi")
-    end,
-    { descripton = "Client switcher (alt+tab)", group = "Application" }
-  ),
-  awful.key(
-    { modkey },
-    "#26",
-    function()
-      awful.spawn(user_vars.file_manager)
-    end,
-    { descripton = "Open file manager", group = "System" }
-  ),
-  awful.key(
-    { modkey, "Shift" },
-    "#26",
+    "#46",
     function()
       awesome.emit_signal("module::powermenu:show")
     end,

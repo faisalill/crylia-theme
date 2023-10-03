@@ -1,0 +1,53 @@
+colors:
+  name: Atelierseaside (dark)
+  author: Chris Kempson
+  primary:
+    background: "#131513"
+    foreground: "#8ca68c"
+  cursor:
+    text: "#131513"
+    cursor: "#8ca68c"
+  normal:
+    black: "#131513"
+    red: "#e6193c"
+    green: "#29a329"
+    yellow: "#c3c322"
+    blue: "#3d62f5"
+    magenta: "#ad2bee"
+    cyan: "#1999b3"
+    white: "#8ca68c"
+  bright:
+    black: "#687d68"
+    red: "#e6193c"
+    green: "#29a329"
+    yellow: "#c3c322"
+    blue: "#3d62f5"
+    magenta: "#ad2bee"
+    cyan: "#1999b3"
+    white: "#f0fff0"
+theme: Atelierseaside.dark
+
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+    style: SemiBold
+
+  bold:
+    family: JetBrainsMono Nerd Font
+    style: Bold
+
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Italic
+
+  bold_italic:
+    family: JetBrainsMono Nerd Font
+    style: Bold Italic
+  size: 14
+draw_bold_text_with_bright_colors: true
+window:
+  opacity: 0.6
+  padding:
+    x: 12
+    y: 8
+  dynamic_padding: true
