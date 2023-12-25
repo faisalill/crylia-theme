@@ -140,11 +140,6 @@ return function()
 
 				if battery_percentage > 0 and battery_percentage < 10 then
 					icon = icon .. "-" .. status .. "-" .. "outline"
-					naughty.notify({
-						title = "Low Battery",
-						text = "Percentage: " .. battery_percentage,
-						timeout = 5, -- Duration in seconds
-					})
 				elseif battery_percentage >= 10 and battery_percentage < 20 then
 					icon = icon .. "-" .. status .. "-" .. "10"
 				elseif battery_percentage >= 20 and battery_percentage < 30 then
