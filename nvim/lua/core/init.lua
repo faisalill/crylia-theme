@@ -10,7 +10,8 @@ g.transparency = config.ui.transparency
 
 -------------------------------------- neovide config ------------------------------------------
 vim.o.guifont = "JetBrainsMono Nerd Font:h14:b"
-
+g.neovide_transparency = 0.5
+g.neovide_cursor_vfx_mode = "sonicboom"
 
 -------------------------------------- options ------------------------------------------
 opt.laststatus = 3 -- global statusline
