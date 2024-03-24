@@ -6,7 +6,6 @@ local plugins = {
     event = "InsertEnter",
     opts = overrides.copilot,
   },
-
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -79,69 +78,54 @@ local plugins = {
     },
   }, -- In order to modify the `lspconfig` configuration:
   {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup {
+        ensure_installed = {
+          "pyright",
+          "gopls",
+          "lua_ls",
+          "html",
+          "clangd",
+          "cssls",
+          "rust-analyzer",
+          "arduino_language_server",
+          "bashls",
+          "dockerls",
+          "tsserver",
+          "svelte-language-server",
+          "tailwindcss-language-server",
+          "stylua",
+          "prettier"
+        },
+      }
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "jose-elias-alvarez/null-ls.nvim",
-      config = function()
-        require "custom.configs.null-ls"
-      end,
-    },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
   },
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "pyright",
-        "gopls",
-        "lua-language-server",
-        "html-lsp",
-        "prettier",
-        "stylua",
-        "clangd",
-        "css-lsp",
-        "svelte-language-server",
-        "svelte",
-        "rust-analyzer"
-      },
-    },
+    "mfussenegger/nvim-lint",
+    config = function ()
+      require("custom.configs.lint")
+    end
   },
-  {
-    "echasnovski/mini.animate",
-    event = "VeryLazy",
-    opts = function()
-      -- don't use animate when scrolling with the mouse
-      local mouse_scrolled = false
-      for _, scroll in ipairs { "Up", "Down" } do
-        local key = "<ScrollWheel" .. scroll .. ">"
-        vim.keymap.set({ "", "i" }, key, function()
-          mouse_scrolled = true
-          return key
-        end, { expr = true })
-      end
-
-      local animate = require "mini.animate"
-      return {
-        resize = {
-          timing = animate.gen_timing.linear { duration = 100, unit = "total" },
-        },
-        scroll = {
-          timing = animate.gen_timing.linear { duration = 150, unit = "total" },
-          subscroll = animate.gen_subscroll.equal {
-            predicate = function(total_scroll)
-              if mouse_scrolled then
-                mouse_scrolled = false
-                return false
-              end
-              return total_scroll > 1
-            end,
-          },
-        },
-      }
-    end,
+ {
+    "mhartington/formatter.nvim",
+    event="VeryLazy",
+    opts = function ()
+      return require("custom.configs.formatter")
+    end
   },
   {
     "folke/todo-comments.nvim",

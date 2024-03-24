@@ -19,6 +19,7 @@ local servers = {
           "bashls",
           "dockerls",
           "tsserver",
+          "prettier"
  }
 
 for _, lsp in ipairs(servers) do
